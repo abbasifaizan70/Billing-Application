@@ -1,0 +1,20 @@
+<h1>Features</h1>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th scope='col'>Feature Id</th>
+      <th scope='col'>Name</th>
+      <th scope='col'>Code</th>
+      <th scope='col'>Unit Price</th>
+      <th scope='col'>Max Usage Limit</th>
+      <th scope='col'>Plan Id </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'feature', collection: @features %>
+  </tbody>
+</table>
+<% if current_user.admin? %>
+  <%= link_to 'Add New Feature', new_plan_feature_path(@features&.first&.plan_id) %>
+<% end %>

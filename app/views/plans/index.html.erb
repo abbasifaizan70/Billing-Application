@@ -1,0 +1,24 @@
+<h1>Plans</h1>
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th scope='col'>Plan Name</th>
+      <th scope='col'>Monthly Price</th>
+      <% if current_user.admin? %>
+        <th scope='col'>Admin Id</th>
+        <th scope='col'>Plan Id</th>
+      <% end %>
+      <th scope='col'>Features Details</th>
+      <% if current_user.buyer? %>
+        <th scope='col'>Subscription Status</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'plan', collection: @plans %>
+  </tbody>
+</table>
+<% if current_user.admin? %>
+  <%= link_to 'Add New Plan', new_plan_path, class:'btn btn-info mb-3' %>
+<% end %>
+<%= link_to 'Back', :back %>
